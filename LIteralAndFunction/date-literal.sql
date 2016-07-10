@@ -1,14 +1,20 @@
-DROP TABLE date_literal;
 
 CREATE TABLE IF NOT EXISTS date_literal (
     val1 date,
-    val2 datetime
+    val2 datetime,
+    val3 timestamp,
+    val4 time,
+    val5 year
 );
 
-# 2016-05-01, 2016-05-01 07:00:07
-insert into date_literal(val1, val2) values (now(), now());
+INSERT INTO date_literal values (now(), now(), now(), now(), now());
 
-insert into date_literal(val1, val2) values ('2016-12-25', '2015-12-24 15:30:33');
+SELECT * FROM date_literal;
 
+SELECT now(), curtime();
 
-select * from date_literal;
+SELECT dayofmonth('2016-07-28'), dayofweek('20160728'), dayofyear('20160728');
+
+SELECT date_add('2016-07-01', interval 3 day);
+
+SELECT date_format(now(), '%y %m %c');
